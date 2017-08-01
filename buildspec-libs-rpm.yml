@@ -1,0 +1,31 @@
+version: 0.2
+
+env:
+  variables:
+    build_version: "0.1"
+
+phases:
+  install:
+    commands:
+      - yum install rpm-build make gcc glibc -y
+  pre_build:
+    commands:
+      - curr_working_dir=`pwd`
+      - mkdir -p ./{RPMS,SRPMS,BUILD,SOURCES,SPECS,tmp}
+      - filename="cbsample-libs-$build_version"
+      - echo $filename
+      - mkdir -p $filename
+      - cp ./*.c ./*.h Makefile $filename
+      - tar -zcvf /root/$filename.tar.gz $filename
+      - cp /root/$filename.tar.gz ./SOURCES/
+      - cp cbsample-libs.rpmspec ./SPECS/
+  build:
+    commands:
+      - echo "Triggering RPM build"
+      - rpmbuild --define "_topdir `pwd`" -ba SPECS/cbsample-libs.rpmspec
+      - cd $curr_working_dir
+
+artifacts:
+  files:
+    - RPMS/x86_64/cbsample-libs*.rpm
+  discard-paths: yes

@@ -1,0 +1,34 @@
+Name:cbsample-libs
+Version:        0.1
+Release:        1%{?dist}
+Summary:        A sample libs created for AWS CodeBuild demo
+
+Group:          Develeopment/Tools
+License:        Amazon Software License
+URL:            https://aws.amazon.com/codebuild/
+Source0:        %{name}-%{version}.tar.gz
+
+%description
+A sample utils created for AWS CodeBuild demo
+
+%prep
+rm -rf $RPM_BUILD_ROOT
+mkdir -p $RPM_BUILD_ROOT
+tar -zxvf ../SOURCES//%{SOURCEURL0} -C .
+
+%build
+cd %{name}-%{version}
+make lib
+
+%install
+mkdir -p $RPM_BUILD_ROOT/usr/lib64
+mkdir -p $RPM_BUILD_ROOT/usr/include
+cp %{name}-%{version}/libcbsamplelib.so $RPM_BUILD_ROOT/usr/lib64/
+cp %{name}-%{version}/cbsamplelib.h $RPM_BUILD_ROOT/usr/include/
+
+
+%files
+%defattr(755,root,root)
+/usr/lib64/libcbsamplelib.so
+%defattr(644,root,root)
+/usr/include/cbsamplelib.h

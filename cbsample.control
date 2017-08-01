@@ -1,0 +1,6 @@
+Package: cbsample
+Architecture: all
+Maintainer: Prakash Palanisamy
+Priority: optional
+Version: 0.1
+Description: A sample library created for AWS CodeBuild demo

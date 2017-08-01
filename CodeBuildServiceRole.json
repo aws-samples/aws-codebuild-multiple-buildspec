@@ -1,0 +1,43 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "codecommit:ListBranches",
+                "codecommit:ListRepositories",
+                "codecommit:BatchGetRepositories",
+                "codecommit:Get*",
+                "codecommit:GitPull"
+            ],
+            "Resource": [
+                "arn:aws:codecommit:eu-west-1:012345678912:*"
+            ],
+            "Effect": "Allow"
+        },
+        {
+            "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ],
+            "Resource": [
+                "arn:aws:logs:eu-west-1:012345678912:log-group:/aws/codebuild/*"
+            ],
+            "Effect": "Allow"
+        },
+        {
+            "Action": [
+                "s3:PutObject",
+                "s3:GetObject",
+                "s3:GetObjectVersion",
+                "s3:ListBucket"
+            ],
+            "Resource": [
+                "arn:aws:s3:::codepipeline-eu-west-1-*",
+                "arn:aws:s3:::codebuild-demo-artifcat-repository/*",
+                "arn:aws:s3:::codebuild-demo-artifcat-repository"
+            ],
+            "Effect": "Allow"
+        }
+    ]
+}

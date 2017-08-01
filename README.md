@@ -1,2 +1,3 @@
-# aws-codebuild-multiple-buildspec
-Sample code to demonstrate the possibilities of running multiple different builds from the same repository using multiple AWS CodeBuild build specification files. 
+# codeBuild-multiple-buildspec
+
+This repo contains the sample application to showcase the possibilities of using multiple AWS CodeBuild build specification files to run multiple builds from same source repository.
