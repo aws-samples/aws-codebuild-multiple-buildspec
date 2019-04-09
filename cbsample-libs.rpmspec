@@ -4,7 +4,7 @@ Release:        1%{?dist}
 Summary:        A sample libs created for AWS CodeBuild demo
 
 Group:          Develeopment/Tools
-License:        Amazon Software License
+License:        MIT-0
 URL:            https://aws.amazon.com/codebuild/
 Source0:        %{name}-%{version}.tar.gz
 
